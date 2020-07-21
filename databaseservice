@@ -1,0 +1,17 @@
+FROM ubuntu
+RUN apt-get update \
+&& apt-get install -y vim \
+&& apt-get install -y wget \
+&& wget https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz \
+&& tar -xvf go1.14.4.linux-amd64.tar.gz \
+&& mv go /usr/local \
+&& echo export GOROOT=/usr/local/go >> $HOME/.bashrc \
+&& echo export GOPATH=$HOME/go >> $HOME/.bashrc \
+&& echo export GOBIN=$HOME/go/bin >> $HOME/.bashrc \
+&& echo export PATH=$PATH:/usr/local/go/bin >> $HOME/.bashrc \
+&& rm go1.14.4.linux-amd64.tar.gz \
+&& mkdir $HOME/go \
+&& cd $HOME/go \
+&& mkdir bin \
+&& mkdir src \
+&& mkdir pkg 
